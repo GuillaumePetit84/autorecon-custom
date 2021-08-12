@@ -26,6 +26,7 @@
          pattern = '^(?P<port>\d+)\/(?P<protocol>(tcp|udp))(.*)open(\s*)(?P<service>[\w\-\/]+)(\s*)(.*)$'
 
 
+
 [quick]
 
     [quick.nmap-quick]
