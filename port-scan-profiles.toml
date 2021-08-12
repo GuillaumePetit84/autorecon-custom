@@ -1,5 +1,6 @@
 [default]
 
+
     [default.nmap-quick]
 
         [default.nmap-quick.service-detection]
@@ -9,20 +10,21 @@
    [default.nmap-custom-tcp]
 
         [default.nmap-custom-tcp.service-detection]
-        command = 'sudo nmap -sS -sV -T5 -A -p1-65535 -oN "{scandir}/_nmap_tcp.txt" -oX "{scandir}/xml/_nmap_tcp.xml" {address}'
+        command = 'sudo nmap -Pn -sT -sV -T5 -A -p1-65535 -oN "{scandir}/_nmap_tcp.txt" -oX "{scandir}/xml/_nmap_tcp.xml" {address}'
         pattern = '^(?P<port>\d+)\/(?P<protocol>(tcp|udp))(.*)open(\s*)(?P<service>[\w\-\/]+)(\s*)(.*)$'
 
    [default.nmap-custom-vuln]
 
          [default.nmap-custom-vuln.service-detection]
-         command = 'sudo nmap -p1-65535 -sS -T5 -A --open --script=exploit,vuln,auth,default -oN "{scandir}/_nmap_vuln.txt" -oX "{scandir}/xml/_nmap_vuln.xml" {address}'
+         command = 'sudo nmap -Pn -p1-65535 -sT -T5 -A --open --script=exploit,vuln,auth,default -oN "{scandir}/_nmap_vuln.txt" -oX "{scandir}/xml/_nmap_vuln>
          pattern = '^(?P<port>\d+)\/(?P<protocol>(tcp|udp))(.*)open(\s*)(?P<service>[\w\-\/]+)(\s*)(.*)$'
 
     [default.nmap-custom-udp]
  
          [default.nmap-custom-udp.service-detection]
-         command = 'sudo nmap -sU -oN "{scandir}/_nmap_udp.txt" -oX "{scandir}/xml/_nmap_udp.xml" {address}'
+         command = 'sudo nmap -Pn -sU -oN "{scandir}/_nmap_udp.txt" -oX "{scandir}/xml/_nmap_udp.xml" {address}'
          pattern = '^(?P<port>\d+)\/(?P<protocol>(tcp|udp))(.*)open(\s*)(?P<service>[\w\-\/]+)(\s*)(.*)$'
+
 
 [quick]
 
