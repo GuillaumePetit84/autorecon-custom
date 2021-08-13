@@ -125,15 +125,10 @@ ignore-service-names = [
     name = 'whatweb'
     command = 'whatweb --color=never --no-errors -a 3 -v {scheme}://{address}:{port} 2>&1 | tee "{scandir}/{protocol}_{port}_{scheme}_whatweb.txt"'
 
-    # CUSTOM
     [[http.scan]]
-    name = 'gobuster'
-    command = 'gobuster dir -u {scheme}://{address}:{port} -w /usr/share/wordlists/dirb/big.txt -x txt,html,php,asp,aspx,jsp > {scandir}/{protocol}_{port}_{scheme}_gobuster.txt'
+    name = 'feroxbuster'
+    command = 'feroxbuster -u {scheme}://{address}:{port} -t 10 -w /usr/share/seclists/Discovery/Web-Content/common.txt -x "txt,html,php,asp,aspx,jsp" -v -k -n -o {scandir}/{protocol}_{port}_{scheme}_feroxbuster.txt'
 
-    [[http.scan]]
-    name = 'nikto'
-    command = 'nikto -Tuning x 6 -host {scheme}://{address}:{port} > {scandir}/{protocol}_{port}_{scheme}_nikto.txt'
- 
     [[http.manual]]
     description = '(nikto) old but generally reliable web server enumeration tool'
     commands = [
